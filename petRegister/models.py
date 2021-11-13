@@ -2,7 +2,7 @@ from django.db import models
 
 from uuid import uuid4
 
-from Register.models import Registro
+from register.models import registro
 
 
 def upload_imagem_pet(instance, filename):
@@ -19,7 +19,7 @@ class PetRegistro(models.Model):
         ('F', 'Femea')
         )
         Pet_ID = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-        Usuario_ID = models.ForeignKey(Registro, on_delete=models.CASCADE)
+        Usuario_ID = models.ForeignKey(registro, on_delete=models.CASCADE)
         NomePet = models.CharField(max_length=100)
         Idade = models.IntegerField()
         Sexo = models.CharField(max_length=1, choices=SEXO, blank=False, null=False, default='M')
