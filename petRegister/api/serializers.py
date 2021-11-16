@@ -10,3 +10,13 @@ class PetMensagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MensagemPet
         fields = '__all__'
+
+class ListaMensagemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.MensagemPet
+        fields = ['Pergunta', 'Resposta']
+
+class ListaPetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.PetRegistro
+        fields = '__all__'

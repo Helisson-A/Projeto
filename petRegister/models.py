@@ -1,7 +1,4 @@
 from django.db import models
-
-from uuid import uuid4
-
 from register.models import registro
 
 
@@ -18,8 +15,7 @@ class PetRegistro(models.Model):
         ('M', 'Macho'),
         ('F', 'Femea')
         )
-        Pet_ID = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-        Usuario_ID = models.ForeignKey(registro, on_delete=models.CASCADE)
+        id_cadastro = models.ForeignKey(registro, on_delete=models.CASCADE)
         NomePet = models.CharField(max_length=100)
         Idade = models.IntegerField()
         Sexo = models.CharField(max_length=1, choices=SEXO, blank=False, null=False, default='M')
@@ -36,7 +32,6 @@ class PetRegistro(models.Model):
             return self.NomePet
 
 class MensagemPet(models.Model):
-    ID_Pergunta = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     Id_Pet = models.ForeignKey(PetRegistro, on_delete=models.CASCADE)
     Pergunta = models.TextField()
     Resposta = models.TextField()

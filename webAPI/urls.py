@@ -19,9 +19,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
+from register import views
 
 from register.api.viewsets import registerViewSet
-from petRegister.api.viewsets import PetViewSet, PetMensagemViewSet
+from petRegister.api.viewsets import PetViewSet, PetMensagemViewSet, ListaMensagem, ListaPet
 
 route = routers.DefaultRouter()
 
@@ -33,5 +34,7 @@ route.register(r'MensagemPet', PetMensagemViewSet, basename='Mensagens')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('MensagemPet/<int:pk>/CadastroPet',ListaMensagem.as_view(),name='ListaMensagem'),
+    path('CadastroPet/<int:pk>/CadastroGeral',ListaPet.as_view(),name='ListaPet'),
     path('',include(route.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

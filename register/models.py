@@ -2,8 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class registro(AbstractUser):
-    Nome = models.CharField(max_length=100,null=True)
-    password = models.CharField(max_length=50)
     DataNascimento = models.DateField(null=True)
     Celular = models.CharField(max_length=100, null=True)
     EndRua = models.IntegerField(blank=True, null=True)
